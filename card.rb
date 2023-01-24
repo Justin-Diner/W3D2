@@ -6,14 +6,18 @@ class Card
 	attr_reader :face_value
 	def initialize
 		@face_value = ("a".."z").to_a.sample.upcase
-		@revealed = false 
+		@face_up = false 
 	end
 
 	def hide 
-		@revealed = false
+		@face_up = false
 	end
 
 	def reveal 
-		@revealed = true
+		@face_up = true
+	end
+
+	def ==(card)
+		self.face_value == card.face_value
 	end
 end
