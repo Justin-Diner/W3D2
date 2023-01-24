@@ -30,7 +30,20 @@ class Board
     # end
 
 	def populate_grid
-        
+		counter = 0
+
+		while counter < @size
+			(0...@grid.length).each do |row|
+				(0...@grid.length).each do |col|
+					position = @grid[row][col]
+					if position == "_"
+						@grid[row][col] = @cards[counter]
+						counter +=1 
+					end
+				end
+			end
+		end
+		@grid
 	end
 
 
@@ -46,7 +59,6 @@ class Board
     #         end
 
     #     end
-    # end
-
+    
 end
 
