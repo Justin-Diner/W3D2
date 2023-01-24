@@ -67,22 +67,31 @@ class Board
 		end
 	end
 
-	def winner?
-		winner_grid = @grid.flatten
-		winner_grid.all? {|card| card.face_up == true}
+	def winner?(card1, card2)
+		return true if card1.face_value == card2.face_value
+        false
 	end
 
 
+    def allfaceup
+        @grid.each do |row|
+            row.each do |card|
+                card.reveal
+            end
+        end
+    end
 
-    #     @grid.each do |sub_arr|
-    #         sub_arr.each do |ele|
-    #             ele = Card.new
+    def reveal_chosen(position) #[1, 2]
+        row, col = position
+
+        card = @grid[row][col]
+        if !card.face_up
+            card.reveal
+            return card.face_value
+        end
+
+    end
 
 
-
-    #         end
-
-    #     end
-    
 end
 
