@@ -3,7 +3,7 @@ require_relative './board.rb'
 require_relative './game.rb'
 
 class Card 
-	attr_reader :face_value
+	attr_reader :face_value, :face_up
 	def initialize(mark)
 		@face_value = mark
 		@face_up = false 

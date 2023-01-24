@@ -9,6 +9,8 @@ class Board
         @size = n * n
 		@cards = []
 		@available_spots 
+		self.populate_cards
+		self.populate_grid
     end
 
     def populate_cards
@@ -43,10 +45,32 @@ class Board
 				end
 			end
 		end
-		@grid
 	end
 
+	def print_grid
+		current_board = []
 
+		@grid.each do |subArr|
+			house = []
+			subArr.each do |card|
+				if card.face_up 
+				 	house << card.face_value
+				else 
+					house << "_"
+				end
+			end
+		current_board << house
+		end
+		
+		current_board.each do |row|
+			puts row.join(" ") + "\n"
+		end
+	end
+
+	def winner?
+		winner_grid = @grid.flatten
+		winner_grid.all? {|card| card.face_up == true}
+	end
 
 
 
