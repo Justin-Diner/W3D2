@@ -12,34 +12,28 @@ class Board
     end
 
     def populate_cards
-        half_size = @size / 2
-	
-        half_size.times { @cards << Card.new }
+        half_size = @size/2
+        first_arr = []
+        half_size.times { first_arr << Card.new(("A".."Z").to_a.sample) }
 
-		temp = @cards
-       @cards.concat(temp)
+        second_arr = []
+        first_arr.each_with_index do |ele, i|
+            second_arr << Card.new(ele.face_value)
+        end
+        @cards = first_arr.concat(second_arr).shuffle
     end
 
-    def available?(position)
-        row, col = position
-        return true if @grid[row][col] == "_"
-        false
-    end
+    # def available?(position)
+    #     row, col = position
+    #     return true if @grid[row][col] == "_"
+    #     false
+    # end
 
-	def populate
-		(0...@grid.length).each do |i|
-			(0...@grid.length).each do |j|
-				if @grid[i][j] == "_"
-					@grid[i][j] = @cards
-				end
-			end
-		end
+	def populate_grid
+        
 	end
 
-    # def populate_grid
-    #     @cards.samp
-            
-    # end
+
 
 
 

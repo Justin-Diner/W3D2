@@ -4,8 +4,8 @@ require_relative './game.rb'
 
 class Card 
 	attr_reader :face_value
-	def initialize
-		@face_value = ("a".."z").to_a.sample.upcase
+	def initialize(mark)
+		@face_value = mark
 		@face_up = false 
 	end
 
